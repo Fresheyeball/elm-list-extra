@@ -4,7 +4,7 @@ module List.Extra
   , uncons
   , minimumBy
   , maximumBy
-  , andMap, andThen
+  , andMap, singleton, andThen
   , takeWhile
   , dropWhile
   , dropDuplicates
@@ -150,6 +150,12 @@ dropDuplicates list =
 andMap : List (a -> b) -> List a -> List b
 andMap fl l = map2 (<|) fl l
 
+{-| Convert a value into a list containing one value.
+    singleton 3 == [3]
+-}
+
+singleton : a -> List a
+singleton x = [x]
 
 {-| Equivalent to `concatMap` with arguments reversed. Ideal to use as an infix function, chaining together functions that return List. For example, suppose you want to have a cartesian product of [1,2] and [3,4]:
 
